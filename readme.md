@@ -1,7 +1,7 @@
 # Поиск предприятий
 Чтобы развернуть проект:
 1. Устанавливаем репозиторий:
- - **git clone https://14bd02002@bitbucket.org/14bd02002/interprise.kz.git**
+ - **git clone https://14bd02002@bitbucket.org/14bd02002/interprisenew.kz.git**
  - **cd interprises.test**
  - **composer install**
  - **npm install**
