@@ -1,0 +1,30 @@
+.page-company{
+  .company{
+    &__name{
+      text-align:center;
+      margin:60px 0 30px;
+    }
+    &__base-info{
+      border-right:1px solid rgba(0,0,0,0.4);
+      h3{
+        text-align:center;
+        margin-bottom: 20px;
+      }
+    }
+    &__history{
+      h3{
+        text-align:center;
+        margin-bottom: 20px;
+      }
+      .history{
+        padding:15px 0;
+        border-bottom:1px dashed #000;
+      }
+    }
+    &__markers{
+      margin-top: 20px;
+      padding: 20PX 0;
+      border-top:1px solid rgba(0,0,0,0.4);
+    }
+  }
+}
