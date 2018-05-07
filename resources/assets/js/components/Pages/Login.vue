@@ -39,6 +39,10 @@
 
                     <div v-else>
                         <h2 class="text-center">Вы успешно вошли в систему</h2>
+                        <router-link :to="{ name: 'home'}">
+                            <button class="button button-primary" style="float: right; left: -35%; position: relative">На главную страницу</button>
+                        </router-link>
+
                     </div>
                 </div>
             </div>

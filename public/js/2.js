@@ -92,6 +92,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -232,7 +236,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]), _vm._v(" "), _vm._m(1)])]) : _c('div', [_c('h2', {
     staticClass: "text-center"
-  }, [_vm._v("Вы успешно вошли в систему")])])])])])])
+  }, [_vm._v("Вы успешно вошли в систему")]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": {
+        name: 'home'
+      }
+    }
+  }, [_c('button', {
+    staticClass: "button button-primary",
+    staticStyle: {
+      "float": "right",
+      "left": "-35%",
+      "position": "relative"
+    }
+  }, [_vm._v("На главную страницу")])])], 1)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', {
     staticStyle: {

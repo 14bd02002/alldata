@@ -10,6 +10,7 @@
                 </form>
             </div>
             <h1>Результаты поиска</h1>
+            <hr>
             <div class="results">
                 <div v-if="status == 'searching'" class="searching">
                     Обработка запроса...

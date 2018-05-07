@@ -581,7 +581,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "company__activity"
   }, [_c('b', [_vm._v(_vm._s(_vm.results.company.activity_ru))])]), _vm._v(" "), _c('p', {
     staticClass: "company__address"
-  }, [_vm._v("\n                            Юридический адрес: " + _vm._s(_vm.results.company.address) + "\n                        ")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                            Юридический адрес: " + _vm._s(_vm.results.company.address) + "\n                        ")]), _vm._v(" "), _c('p', {
+    staticClass: "company__date"
+  }, [_vm._v("\n                            Дата основания: " + _vm._s(_vm.results.company.register_date) + "\n                        ")]), _vm._v(" "), _c('p', {
+    staticClass: "company__bin"
+  }, [_vm._v("\n                            БИН: " + _vm._s(_vm.results.company.BIN) + "\n                        ")]), _vm._v(" "), _c('p', {
+    staticClass: "company__status"
+  }, [_vm._v("\n                            Статус:\n                            "), (_vm.results.company.active == 1) ? _c('span', {
+    staticClass: "marker green active"
+  }, [_vm._v("В работе")]) : _c('span', {
+    staticClass: "marker red"
+  }, [_vm._v("Не работает")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
     staticClass: "company__ceo",
     on: {
       "click": function($event) {
@@ -603,7 +613,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "director"
   }, [_c('hr'), _vm._v(" "), _c('h3', {
     staticClass: "director__title"
-  }, [_vm._v(" " + _vm._s(_vm.results.company.CEO))]), _vm._v(" "), _c('p', {
+  }, [_vm._v(" Дополнительная информация по руководителю")]), _vm._v(" "), _c('p', {
     staticClass: "director__terror"
   }, [_vm._v("\n                                        В базе плательщиков с задолжностью :\n                                        "), (_vm.results.ceo.promiser == 0) ? _c('span', {
     staticClass: "marker green"
@@ -623,7 +633,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "marker red"
   }, [_vm._v("Есть")])]), _vm._v(" "), (_vm.results.ceo.interprises.length > 1) ? _c('div', {
     staticClass: "director__interprises"
-  }, [_c('h3', [_vm._v(_vm._s(_vm.results.company.CEO) + " Также является владельцем следующих\n                                            " + _vm._s(_vm.results.ceo.interprises.length) + " предприятий ...")]), _vm._v(" "), _vm._l((_vm.results.ceo.interprises), function(item, index) {
+  }, [_c('h3', [_vm._v(_vm._s(_vm.results.company.CEO) + " Также является директором следующих\n                                            " + _vm._s(_vm.results.ceo.interprises.length) + " предприятий ...")]), _vm._v(" "), _vm._l((_vm.results.ceo.interprises), function(item, index) {
     return _c('p', [_c('router-link', {
       attrs: {
         "to": {
@@ -634,17 +644,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("\n                                                " + _vm._s(item.name_ru) + "\n                                            ")])], 1)
-  })], 2) : _vm._e(), _vm._v(" "), _c('hr')])])]), _vm._v(" "), _c('p', {
-    staticClass: "company__date"
-  }, [_vm._v("\n                            Дата основания: " + _vm._s(_vm.results.company.register_date) + "\n                        ")]), _vm._v(" "), _c('p', {
-    staticClass: "company__bin"
-  }, [_vm._v("\n                            БИН: " + _vm._s(_vm.results.company.BIN) + "\n                        ")]), _vm._v(" "), _c('p', {
-    staticClass: "company__status"
-  }, [_vm._v("\n                            Статус:\n                            "), (_vm.results.company.active == 1) ? _c('span', {
-    staticClass: "marker green active"
-  }, [_vm._v("В работе")]) : _c('span', {
-    staticClass: "marker red"
-  }, [_vm._v("Не работает")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
+  })], 2) : _vm._e(), _vm._v(" "), _c('hr')])])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
     staticClass: "company__oked"
   }, [_c('button', {
     staticClass: "collapsed main-collapse",
@@ -720,71 +720,57 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                                            " + _vm._s(filial.name) + "\n                                        ")]), _vm._v(" "), _c('br')], 1)
   })], 2)])]), _vm._v(" "), _c('div', {
     staticClass: "company__markers"
-  }, [_c('p', {
+  }, [_c('h3', [_vm._v("Показатели надежности")]), _vm._v(" "), (_vm.$store.state.authState == 'guest') ? _c('div', [_vm._v("\n                                Для просмотра этих данных необходимо авторизоваться!\n                                \n                            ")]) : _c('div', [_c('p', {
     staticClass: "company__bad"
-  }, [_vm._v("\n                                В базе ненадежных компаний :\n                                "), (_vm.results.bad == 0) ? _c('span', {
+  }, [_vm._v("\n                                    В базе ненадежных компаний :\n                                    "), (_vm.results.bad == 0) ? _c('span', {
     staticClass: "marker green"
   }, [_vm._v("Нет")]) : _c('span', {
     staticClass: "marker red"
   }, [_vm._v("Есть")])]), _vm._v(" "), _c('p', {
     staticClass: "company__bankrot"
-  }, [_vm._v("\n                                В базе банкротов :\n                                "), (_vm.results.bankrot == 0) ? _c('span', {
+  }, [_vm._v("\n                                    В базе банкротов :\n                                    "), (_vm.results.bankrot == 0) ? _c('span', {
     staticClass: "marker green"
   }, [_vm._v("Нет")]) : _c('span', {
     staticClass: "marker red"
   }, [_vm._v("Есть")])]), _vm._v(" "), _c('p', {
     staticClass: "company__bad"
-  }, [_vm._v("\n                                В базе плательщиков, отсутствующих по Юридическому адресу :\n                                "), (_vm.results.jur == 0) ? _c('span', {
+  }, [_vm._v("\n                                    В базе плательщиков, отсутствующих по Юридическому адресу :\n                                    "), (_vm.results.jur == 0) ? _c('span', {
     staticClass: "marker green"
   }, [_vm._v("Нет")]) : _c('span', {
     staticClass: "marker red"
   }, [_vm._v("Есть")])]), _vm._v(" "), _c('p', {
     staticClass: "company__bankrot"
-  }, [_vm._v("\n                                В базе плательщиков, нарушающие нормы Налогового кодекса :\n                                "), (_vm.results.codex == 0) ? _c('span', {
+  }, [_vm._v("\n                                    В базе плательщиков, нарушающие нормы Налогового кодекса :\n                                    "), (_vm.results.codex == 0) ? _c('span', {
     staticClass: "marker green"
   }, [_vm._v("Нет")]) : _c('span', {
     staticClass: "marker red"
   }, [_vm._v("Есть")])]), _vm._v(" "), _c('p', {
     staticClass: "company__exbankrot"
-  }, [_vm._v("\n                                В базе бывших банкротов :\n                                "), (_vm.results.exbankrot == 0) ? _c('span', {
+  }, [_vm._v("\n                                    В базе бывших банкротов :\n                                    "), (_vm.results.exbankrot == 0) ? _c('span', {
     staticClass: "marker green"
   }, [_vm._v("Нет")]) : _c('span', {
     staticClass: "marker red"
   }, [_vm._v("Есть")])]), _vm._v(" "), _c('p', {
     staticClass: "company__good"
-  }, [_vm._v("\n                                В базе налоговых должников :\n                                "), (_vm.results.promiser == 0) ? _c('span', {
+  }, [_vm._v("\n                                    В базе налоговых должников :\n                                    "), (_vm.results.promiser == 0) ? _c('span', {
     staticClass: "marker green"
   }, [_vm._v("Нет")]) : _c('span', {
     staticClass: "marker green"
   }, [_vm._v("Есть")])]), _vm._v(" "), _c('p', {
     staticClass: "company__good"
-  }, [_vm._v("\n                                В базе надежных предприятий :\n                                "), (_vm.results.good == 0) ? _c('span', {
+  }, [_vm._v("\n                                    В базе надежных предприятий :\n                                    "), (_vm.results.good == 0) ? _c('span', {
     staticClass: "marker orange"
   }, [_vm._v("Нет")]) : _c('span', {
     staticClass: "marker green"
   }, [_vm._v("Есть")])]), _vm._v(" "), _c('p', {
     staticClass: "company__lie"
-  }, [_vm._v("\n                                В базе лжепредприятий :\n                                "), (_vm.results.lie == 0) ? _c('span', {
+  }, [_vm._v("\n                                    В базе лжепредприятий :\n                                    "), (_vm.results.lie == 0) ? _c('span', {
     staticClass: "marker green"
   }, [_vm._v("Нет")]) : _c('span', {
     staticClass: "marker red"
-  }, [_vm._v("Есть")])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Есть")])])])])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4 company__history"
-  }, [(_vm.$store.state.authState == 'guest') ? _c('div', [_vm._v("\n                            Для просмотра истории компании необходимо авторизоваться:\n                            "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.$store.state.authState == 'guest') ? _c('router-link', {
-    staticClass: "button button-primary",
-    attrs: {
-      "to": {
-        name: 'login'
-      }
-    }
-  }, [_vm._v("\n                                Войти\n                            ")]) : _vm._e(), _vm._v(" "), (_vm.$store.state.authState == 'guest') ? _c('router-link', {
-    staticClass: "button button-primary",
-    attrs: {
-      "to": {
-        name: 'register'
-      }
-    }
-  }, [_vm._v("\n                                Зарегистрироваться\n                            ")]) : _vm._e()], 1) : _c('div', [_c('h3', [_vm._v("История компании")]), _vm._v(" "), (_vm.historyStatus == 'empty') ? _c('p', [_vm._v("\n                                У данной компании еще пока нет изменений\n                            ")]) : _vm._e(), _vm._v(" "), (_vm.historyStatus == 'success') ? _c('div', _vm._l((_vm.history), function(item, index) {
+  }, [_c('h3', [_vm._v("История компании")]), _vm._v(" "), (_vm.$store.state.authState == 'guest') ? _c('div', [_vm._v("\n                            Для просмотра этих данных необходимо авторизоваться!\n                        ")]) : _c('div', [(_vm.historyStatus == 'empty') ? _c('p', [_vm._v("\n                                У данной компании еще пока нет изменений\n                            ")]) : _vm._e(), _vm._v(" "), (_vm.historyStatus == 'success') ? _c('div', _vm._l((_vm.history), function(item, index) {
     return _c('div', {
       staticClass: "history"
     }, [_c('button', {

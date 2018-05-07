@@ -8724,3 +8724,7 @@ form input[type="text"] {
   padding: 20PX 0;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
 }
+
+.page-company .director {
+  background-color: white;
+}

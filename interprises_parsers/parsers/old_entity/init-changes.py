@@ -35,24 +35,24 @@ connection = pymysql.connect(host=host, user=username, password=password, db=dat
 
 old_dirs = []
 
-def firstDate(date):
-    print('Creating history ' + date + ' ...')
-    try:
-        with connection.cursor() as cursor:
-            sqlfile = "interprises_parsers/parsers/old_entity/FirstCreation.sql"
-            for line in open(sqlfile, encoding='UTF-8'):
-                if len(line) == 0:
-                    continue
-                query = line.replace('&&path&&', 'interprises_parsers/parsers/old_entity/files/' + date + '/legal_entity.csv', 1)
-                query = query.replace('&&date&&', date, 1)
-                cursor.execute(query)
-                result = cursor.fetchone()
-        connection.commit()
-        print("History date "+date+" were imported to db")
-    except Exception as e:
-        print("import to db error: %s" % str(e))
-    finally:
-        connection.close()
+# def firstDate(date):
+#     print('Creating history ' + date + ' ...')
+#     try:
+#         with connection.cursor() as cursor:
+#             sqlfile = "interprises_parsers/parsers/old_entity/FirstCreation.sql"
+#             for line in open(sqlfile, encoding='UTF-8'):
+#                 if len(line) == 0:
+#                     continue
+#                 query = line.replace('&&path&&', 'interprises_parsers/parsers/old_entity/files/' + date + '/legal_entity.csv', 1)
+#                 query = query.replace('&&date&&', date, 1)
+#                 cursor.execute(query)
+#                 result = cursor.fetchone()
+#         connection.commit()
+#         print("History date "+date+" were imported to db")
+#     except Exception as e:
+#         print("import to db error: %s" % str(e))
+#     finally:
+#         connection.close()
 
 def dates(date):
     print('Creating history ' + date + ' ...')
@@ -136,7 +136,7 @@ def setChanges():
         'date_of_change',
     ]
 
-    firstDate(old_dirs[0])
+    # firstDate(old_dirs[0])
     #
     # old_dirs.remove(old_dirs[0])
     # old_dirs.remove(old_dirs[1])
@@ -158,6 +158,7 @@ def setChanges():
     for i in old_dirs:
         dates(i)
         # print(i)
+    # shutil.rmtree(dir_path + '/files')
 
 
     connection.close()

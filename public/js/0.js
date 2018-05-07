@@ -100,6 +100,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -198,7 +199,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "submit",
       "value": "Искать"
     }
-  })])]), _vm._v(" "), _c('h1', [_vm._v("Результаты поиска")]), _vm._v(" "), _c('div', {
+  })])]), _vm._v(" "), _c('h1', [_vm._v("Результаты поиска")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "results"
   }, [(_vm.status == 'searching') ? _c('div', {
     staticClass: "searching"

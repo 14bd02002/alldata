@@ -55,6 +55,9 @@ class UpdateInterprises extends Command
             if (is_dir('interprises_parsers/tmp')) {
                 shell_exec('rm2 -rf interprises_parsers/tmp');
             }
+            if (is_dir('interprises_parsers/parsers/old_entity/files')) {
+                shell_exec('rm2 -rf interprises_parsers/parsers/old_entity/files');
+            }
         } else {
             if (is_dir('interprises_parsers/parsers/legal_entity/files')) {
                 shell_exec('rm -rf interprises_parsers/parsers/legal_entity/files');
@@ -62,6 +65,10 @@ class UpdateInterprises extends Command
 
             if (is_dir('interprises_parsers/tmp')) {
                 shell_exec('rm -rf interprises_parsers/tmp');
+            }
+
+            if (is_dir('interprises_parsers/parsers/old_entity/files')) {
+                shell_exec('rm2 -rf interprises_parsers/parsers/old_entity/files');
             }
         }
 
@@ -75,9 +82,9 @@ class UpdateInterprises extends Command
         Schema::dropIfExists('terror_entity');
         Schema::dropIfExists('bad_entity');
         Schema::dropIfExists('good_entity');
-        Schema::dropIfExists('old_entity');
-        Schema::dropIfExists('old_branche');
-        Schema::dropIfExists('legal_entity_history');
+        // Schema::dropIfExists('old_entity');
+        // Schema::dropIfExists('old_branche');
+        // Schema::dropIfExists('legal_entity_history');
         Schema::dropIfExists('kato');
         Schema::dropIfExists('oked');
         Schema::dropIfExists('promiser_entity');

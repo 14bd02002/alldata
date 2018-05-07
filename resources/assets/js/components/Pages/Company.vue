@@ -31,6 +31,23 @@
                             <p class="company__address">
                                 Юридический адрес: {{ results.company.address }}
                             </p>
+                            
+
+
+                            <p class="company__date">
+                                Дата основания: {{ results.company.register_date }}
+                            </p>
+                            <p class="company__bin">
+                                БИН: {{ results.company.BIN }}
+                            </p>
+
+                            <p class="company__status">
+                                Статус:
+                                <span v-if="results.company.active == 1" class="marker green active">В работе</span>
+                                <span class="marker red" v-else>Не работает</span>
+                            </p>
+
+                            <br>
                             <div class="company__ceo" @click="ceoInfo()">
                                 <button class="collapsed main-collapse" data-toggle="collapse" data-target="#ceo">
                                     Руководитель: {{ results.company.CEO }}<i><img
@@ -40,7 +57,7 @@
                                 <div id="ceo" class="collapse">
                                     <div class="director">
                                         <hr>
-                                        <h3 class="director__title"> {{ results.company.CEO }}</h3>
+                                        <h3 class="director__title"> Дополнительная информация по руководителю</h3>
 
                                         <p class="director__terror">
                                             В базе плательщиков с задолжностью :
@@ -64,7 +81,7 @@
                                         </p>
 
                                         <div v-if="results.ceo.interprises.length > 1" class="director__interprises">
-                                            <h3>{{ results.company.CEO }} Также является владельцем следующих
+                                            <h3>{{ results.company.CEO }} Также является директором следующих
                                                 {{results.ceo.interprises.length}} предприятий ...</h3>
                                             <p v-for="(item, index) in results.ceo.interprises">
                                                 <router-link :to="{ name: 'company', params: { companyBin: item.BIN }}">
@@ -78,21 +95,6 @@
                                 </div>
 
                             </div>
-
-
-                            <p class="company__date">
-                                Дата основания: {{ results.company.register_date }}
-                            </p>
-                            <p class="company__bin">
-                                БИН: {{ results.company.BIN }}
-                            </p>
-
-                            <p class="company__status">
-                                Статус:
-                                <span v-if="results.company.active == 1" class="marker green active">В работе</span>
-                                <span class="marker red" v-else>Не работает</span>
-                            </p>
-
                             <br>
 
                             <div class="company__oked">
@@ -183,73 +185,71 @@
                             </div>
 
                             <div class="company__markers">
-                                <p class="company__bad">
-                                    В базе ненадежных компаний :
-                                    <span v-if="results.bad == 0" class="marker green">Нет</span>
-                                    <span v-else class="marker red">Есть</span>
-                                </p>
+                                <h3>Показатели надежности</h3>
+                                <div v-if="$store.state.authState == 'guest'">
+                                    Для просмотра этих данных необходимо авторизоваться!
+                                    
+                                </div>
+                                <div v-else>
+                                    <p class="company__bad">
+                                        В базе ненадежных компаний :
+                                        <span v-if="results.bad == 0" class="marker green">Нет</span>
+                                        <span v-else class="marker red">Есть</span>
+                                    </p>
 
-                                <p class="company__bankrot">
-                                    В базе банкротов :
-                                    <span v-if="results.bankrot == 0" class="marker green">Нет</span>
-                                    <span v-else class="marker red">Есть</span>
-                                </p>
-
-
-                                <p class="company__bad">
-                                    В базе плательщиков, отсутствующих по Юридическому адресу :
-                                    <span v-if="results.jur == 0" class="marker green">Нет</span>
-                                    <span v-else class="marker red">Есть</span>
-                                </p>
-
-                                <p class="company__bankrot">
-                                    В базе плательщиков, нарушающие нормы Налогового кодекса :
-                                    <span v-if="results.codex == 0" class="marker green">Нет</span>
-                                    <span v-else class="marker red">Есть</span>
-                                </p>
+                                    <p class="company__bankrot">
+                                        В базе банкротов :
+                                        <span v-if="results.bankrot == 0" class="marker green">Нет</span>
+                                        <span v-else class="marker red">Есть</span>
+                                    </p>
 
 
-                                <p class="company__exbankrot">
-                                    В базе бывших банкротов :
-                                    <span v-if="results.exbankrot == 0" class="marker green">Нет</span>
-                                    <span v-else class="marker red">Есть</span>
-                                </p>
+                                    <p class="company__bad">
+                                        В базе плательщиков, отсутствующих по Юридическому адресу :
+                                        <span v-if="results.jur == 0" class="marker green">Нет</span>
+                                        <span v-else class="marker red">Есть</span>
+                                    </p>
 
-                                <p class="company__good">
-                                    В базе налоговых должников :
-                                    <span v-if="results.promiser == 0" class="marker green">Нет</span>
-                                    <span v-else class="marker green">Есть</span>
-                                </p>
+                                    <p class="company__bankrot">
+                                        В базе плательщиков, нарушающие нормы Налогового кодекса :
+                                        <span v-if="results.codex == 0" class="marker green">Нет</span>
+                                        <span v-else class="marker red">Есть</span>
+                                    </p>
 
-                                <p class="company__good">
-                                    В базе надежных предприятий :
-                                    <span v-if="results.good == 0" class="marker orange">Нет</span>
-                                    <span v-else class="marker green">Есть</span>
-                                </p>
 
-                                <p class="company__lie">
-                                    В базе лжепредприятий :
-                                    <span v-if="results.lie == 0" class="marker green">Нет</span>
-                                    <span v-else class="marker red">Есть</span>
-                                </p>
+                                    <p class="company__exbankrot">
+                                        В базе бывших банкротов :
+                                        <span v-if="results.exbankrot == 0" class="marker green">Нет</span>
+                                        <span v-else class="marker red">Есть</span>
+                                    </p>
+
+                                    <p class="company__good">
+                                        В базе налоговых должников :
+                                        <span v-if="results.promiser == 0" class="marker green">Нет</span>
+                                        <span v-else class="marker green">Есть</span>
+                                    </p>
+
+                                    <p class="company__good">
+                                        В базе надежных предприятий :
+                                        <span v-if="results.good == 0" class="marker orange">Нет</span>
+                                        <span v-else class="marker green">Есть</span>
+                                    </p>
+
+                                    <p class="company__lie">
+                                        В базе лжепредприятий :
+                                        <span v-if="results.lie == 0" class="marker green">Нет</span>
+                                        <span v-else class="marker red">Есть</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4 company__history">
+                            <h3>История компании</h3>
                             <div v-if="$store.state.authState == 'guest'">
-                                Для просмотра истории компании необходимо авторизоваться:
-                                <br>
-                                <br>
-                                <router-link v-if="$store.state.authState == 'guest'" class="button button-primary" :to="{ name: 'login'}">
-                                    Войти
-                                </router-link>
-
-                                <router-link v-if="$store.state.authState == 'guest'" class="button button-primary" :to="{ name: 'register'}">
-                                    Зарегистрироваться
-                                </router-link>
+                                Для просмотра этих данных необходимо авторизоваться!
                             </div>
 
                             <div v-else>
-                                <h3>История компании</h3>
                                 <p v-if="historyStatus == 'empty'">
                                     У данной компании еще пока нет изменений
                                 </p>
