@@ -343,6 +343,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -768,7 +797,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "marker green"
   }, [_vm._v("Нет")]) : _c('span', {
     staticClass: "marker red"
-  }, [_vm._v("Есть")])])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Есть")])]), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(6)])])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4 company__history"
   }, [_c('h3', [_vm._v("История компании")]), _vm._v(" "), (_vm.$store.state.authState == 'guest') ? _c('div', [_vm._v("\n                            Для просмотра этих данных необходимо авторизоваться!\n                        ")]) : _c('div', [(_vm.historyStatus == 'empty') ? _c('p', [_vm._v("\n                                У данной компании еще пока нет изменений\n                            ")]) : _vm._e(), _vm._v(" "), (_vm.historyStatus == 'success') ? _c('div', _vm._l((_vm.history), function(item, index) {
     return _c('div', {
@@ -779,7 +808,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "data-toggle": "collapse",
         "data-target": '#history_' + index
       }
-    }, [_vm._v(_vm._s(item.date) + "\n                                        "), _vm._m(6, true)]), _vm._v(" "), _c('div', {
+    }, [_vm._v(_vm._s(item.date) + "\n                                        "), _vm._m(7, true)]), _vm._v(" "), _c('div', {
       staticClass: "collapse",
       attrs: {
         "id": 'history_' + index
@@ -846,6 +875,40 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "alt": ""
     }
   })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "company__markers"
+  }, [_c('h3', [_vm._v("Информация об уплате налогов и других обязательных платежей в бюджет в компетенции налоговых органов "), _c('h5', [_vm._v("(в соответствии с пп. 1. п.1 статьи 557 Налогового Кодекса РК, данная информация не является налоговой тайной)")])]), _vm._v(" "), _c('table', {
+    staticClass: "table table-striped"
+  }, [_c('thead', [_c('tr', [_c('th', {
+    attrs: {
+      "scope": "col"
+    }
+  }, [_vm._v("Вид налога")]), _vm._v(" "), _c('th', {
+    attrs: {
+      "scope": "col"
+    }
+  }, [_vm._v("2013г")]), _vm._v(" "), _c('th', {
+    attrs: {
+      "scope": "col"
+    }
+  }, [_vm._v("2014г")]), _vm._v(" "), _c('th', {
+    attrs: {
+      "scope": "col"
+    }
+  }, [_vm._v("2015г")]), _vm._v(" "), _c('th', {
+    attrs: {
+      "scope": "col"
+    }
+  }, [_vm._v("2016г")]), _vm._v(" "), _c('th', {
+    attrs: {
+      "scope": "col"
+    }
+  }, [_vm._v("2017г")]), _vm._v(" "), _c('th', {
+    attrs: {
+      "scope": "col"
+    }
+  }, [_c('h6', [_vm._v("В 2018 году по состоянию на первое число периода")])])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("Налоговые поступления")]), _vm._v(" "), _c('td', [_vm._v("3842,1")]), _vm._v(" "), _c('td', [_vm._v("1298,7")]), _vm._v(" "), _c('td', [_vm._v("1765,3")]), _vm._v(" "), _c('td', [_vm._v("1976,8")]), _vm._v(" "), _c('td', [_vm._v("2567,2")]), _vm._v(" "), _c('td', [_vm._v("879,4")])])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('i', [_c('img', {
     attrs: {

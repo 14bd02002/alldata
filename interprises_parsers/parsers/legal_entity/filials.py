@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-__author__ = 'yesdauren'
 import urllib.request
 import re
 from shutil import copyfile
