@@ -23,7 +23,7 @@
                 <h1 class="page-section__title">Лучший сервис для поиска информации о предприятии</h1>
                 <div class="page-section__blocks">
                     <div class="block">
-                        <div class="block__preview"><img src="/images/search-icon.png" alt=""></div>
+                        <div class="block__preview"><img src="/images/search-icon.png" alt="" ></div>
                         <h3 class="block__title">Актуальные данные</h3>
                         <p class="block__description">Наши базы предприятий обновляются каждую неделю</p>
                     </div>

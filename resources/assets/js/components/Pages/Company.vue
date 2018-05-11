@@ -243,31 +243,8 @@
                                     <br>
                                     <div class="company__markers">
                                         <h3>Информация об уплате налогов и других обязательных платежей в бюджет в компетенции налоговых органов <h5>(в соответствии с пп. 1. п.1 статьи 557 Налогового Кодекса РК, данная информация не является налоговой тайной)</h5></h3>
-                                        <table class="table table-striped">
-                                          <thead>
-                                            <tr>
-                                              <th scope="col">Вид налога</th>
-                                              <th scope="col">2013г</th>
-                                              <th scope="col">2014г</th>
-                                              <th scope="col">2015г</th>
-                                              <th scope="col">2016г</th>
-                                              <th scope="col">2017г</th>
-                                              <th scope="col"><h6>В 2018 году по состоянию на первое число периода</h6></th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            <tr>
-                                              <td>Налоговые поступления</td>
-                                              <td>3842,1</td>
-                                              <td>1298,7</td>
-                                              <td>1765,3</td>
-                                              <td>1976,8</td>
-                                              <td>2567,2</td>
-                                              <td>879,4</td>
-                                            </tr>
-                                            
-                                          </tbody>
-                                        </table>
+                                        <div v-html="taxes">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -342,6 +319,7 @@
                 isFilial : false,
                 filials: '',
                 wanted: '',
+                taxes: '',
                 head: '',
                 results: {
                     company: {},
@@ -370,6 +348,18 @@
                         this.wanted == 'error';
                     });
             },
+            getTaxes(){
+                this.taxes == 'loading';
+                axios.get('/backend/taxes/' + this.results.company.BIN)
+                    .then((response) => {
+                        //console.log(response.data);
+                        this.taxes = response.data
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        this.taxes == 'error';
+                    });
+            }, 
             getHead(){
                 axios.get('/backend/head/' + this.results.company.BIN)
                     .then((response) => {
@@ -492,6 +482,7 @@
                         }
 
                         this.getHistory();
+                        this.getTaxes();
                     })
                     .catch((error) => {
                         console.log(error);

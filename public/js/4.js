@@ -349,29 +349,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -386,6 +363,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             isFilial: false,
             filials: '',
             wanted: '',
+            taxes: '',
             head: '',
             results: {
                 company: {}
@@ -415,28 +393,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.wanted == 'error';
             });
         },
-        getHead: function getHead() {
+        getTaxes: function getTaxes() {
             var _this2 = this;
+
+            this.taxes == 'loading';
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/backend/taxes/' + this.results.company.BIN).then(function (response) {
+                //console.log(response.data);
+                _this2.taxes = response.data;
+            }).catch(function (error) {
+                console.log(error);
+                _this2.taxes == 'error';
+            });
+        },
+        getHead: function getHead() {
+            var _this3 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/backend/head/' + this.results.company.BIN).then(function (response) {
                 console.log(response.data);
-                _this2.head = response.data;
+                _this3.head = response.data;
             }).catch(function (error) {
                 console.log(error);
             });
         },
         getFilials: function getFilials() {
-            var _this3 = this;
+            var _this4 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/backend/filials/' + this.results.company.BIN).then(function (response) {
                 console.log(response.data);
-                _this3.filials = response.data;
+                _this4.filials = response.data;
             }).catch(function (error) {
                 console.log(error);
             });
         },
         getHistory: function getHistory() {
-            var _this4 = this;
+            var _this5 = this;
 
             this.historyStatus = 'loading';
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/backend/history/' + this.companyBin).then(function (response) {
@@ -446,7 +436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 for (var i in historyResponse) {
                     for (var j in historyFields) {
-                        if (historyResponse[i][historyFields[j]] != _this4.results.company[historyFields[j]]) {
+                        if (historyResponse[i][historyFields[j]] != _this5.results.company[historyFields[j]]) {
                             var push = true;
 
                             for (var k in historyRows) {
@@ -465,70 +455,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 }
                 if (historyRows.length > 0) {
-                    _this4.historyStatus = 'success';
-                    _this4.history = historyRows;
+                    _this5.historyStatus = 'success';
+                    _this5.history = historyRows;
                 } else {
-                    _this4.historyStatus = 'empty';
+                    _this5.historyStatus = 'empty';
                 }
-                _this4.getKato();
-                _this4.getOked();
+                _this5.getKato();
+                _this5.getOked();
             }).catch(function (error) {
                 console.log(error);
-                _this4.historyStatus = 'error';
+                _this5.historyStatus = 'error';
             });
         },
         getKato: function getKato() {
-            var _this5 = this;
+            var _this6 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/backend/kato/' + this.results.company.territory_code).then(function (response) {
                 if (response.data[0].name__ru == '' || response.data[0].name__ru == undefined) {
-                    _this5.kato = 'Нет данных...';
+                    _this6.kato = 'Нет данных...';
                 } else {
-                    _this5.kato = response.data[0].name__ru;
+                    _this6.kato = response.data[0].name__ru;
                 }
-                console.log(_this5.kato);
+                console.log(_this6.kato);
             }).catch(function (error) {
                 console.log(error);
             });
         },
         getOked: function getOked() {
-            var _this6 = this;
+            var _this7 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/backend/oked/' + this.results.company.economic_activity_code).then(function (response) {
                 if (response.data[0].name_ru == '' || response.data[0].name_ru == undefined) {
-                    _this6.oked = 'Нет данных...';
+                    _this7.oked = 'Нет данных...';
                 } else {
-                    _this6.oked = response.data[0].name_ru;
+                    _this7.oked = response.data[0].name_ru;
                 }
 
-                console.log(_this6.oked);
+                console.log(_this7.oked);
             }).catch(function (error) {
                 console.log(error);
             });
         },
         getData: function getData() {
-            var _this7 = this;
+            var _this8 = this;
 
             this.status = 'loading';
             this.companyBin = this.$route.params.companyBin;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/backend/company/' + this.companyBin).then(function (response) {
-                _this7.results = response.data;
-                _this7.results.length == 0 ? _this7.status = 'not-found' : _this7.status = 'done';
+                _this8.results = response.data;
+                _this8.results.length == 0 ? _this8.status = 'not-found' : _this8.status = 'done';
 
-                if (_this7.results.company.BIN[5] == 1) {
-                    _this7.isFilial = true;
-                    _this7.getFilials();
-                    _this7.getHead();
+                if (_this8.results.company.BIN[5] == 1) {
+                    _this8.isFilial = true;
+                    _this8.getFilials();
+                    _this8.getHead();
                 } else {
-                    _this7.isFilial = false;
-                    _this7.getFilials();
+                    _this8.isFilial = false;
+                    _this8.getFilials();
                 }
 
-                _this7.getHistory();
+                _this8.getHistory();
+                _this8.getTaxes();
             }).catch(function (error) {
                 console.log(error);
-                _this7.status = 'error';
+                _this8.status = 'error';
             });
         },
         ceoInfo: function ceoInfo() {
@@ -797,7 +788,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "marker green"
   }, [_vm._v("Нет")]) : _c('span', {
     staticClass: "marker red"
-  }, [_vm._v("Есть")])]), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(6)])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Есть")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
+    staticClass: "company__markers"
+  }, [_vm._m(6), _vm._v(" "), _c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.taxes)
+    }
+  })])])])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4 company__history"
   }, [_c('h3', [_vm._v("История компании")]), _vm._v(" "), (_vm.$store.state.authState == 'guest') ? _c('div', [_vm._v("\n                            Для просмотра этих данных необходимо авторизоваться!\n                        ")]) : _c('div', [(_vm.historyStatus == 'empty') ? _c('p', [_vm._v("\n                                У данной компании еще пока нет изменений\n                            ")]) : _vm._e(), _vm._v(" "), (_vm.historyStatus == 'success') ? _c('div', _vm._l((_vm.history), function(item, index) {
     return _c('div', {
@@ -876,39 +873,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "company__markers"
-  }, [_c('h3', [_vm._v("Информация об уплате налогов и других обязательных платежей в бюджет в компетенции налоговых органов "), _c('h5', [_vm._v("(в соответствии с пп. 1. п.1 статьи 557 Налогового Кодекса РК, данная информация не является налоговой тайной)")])]), _vm._v(" "), _c('table', {
-    staticClass: "table table-striped"
-  }, [_c('thead', [_c('tr', [_c('th', {
-    attrs: {
-      "scope": "col"
-    }
-  }, [_vm._v("Вид налога")]), _vm._v(" "), _c('th', {
-    attrs: {
-      "scope": "col"
-    }
-  }, [_vm._v("2013г")]), _vm._v(" "), _c('th', {
-    attrs: {
-      "scope": "col"
-    }
-  }, [_vm._v("2014г")]), _vm._v(" "), _c('th', {
-    attrs: {
-      "scope": "col"
-    }
-  }, [_vm._v("2015г")]), _vm._v(" "), _c('th', {
-    attrs: {
-      "scope": "col"
-    }
-  }, [_vm._v("2016г")]), _vm._v(" "), _c('th', {
-    attrs: {
-      "scope": "col"
-    }
-  }, [_vm._v("2017г")]), _vm._v(" "), _c('th', {
-    attrs: {
-      "scope": "col"
-    }
-  }, [_c('h6', [_vm._v("В 2018 году по состоянию на первое число периода")])])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("Налоговые поступления")]), _vm._v(" "), _c('td', [_vm._v("3842,1")]), _vm._v(" "), _c('td', [_vm._v("1298,7")]), _vm._v(" "), _c('td', [_vm._v("1765,3")]), _vm._v(" "), _c('td', [_vm._v("1976,8")]), _vm._v(" "), _c('td', [_vm._v("2567,2")]), _vm._v(" "), _c('td', [_vm._v("879,4")])])])])])
+  return _c('h3', [_vm._v("Информация об уплате налогов и других обязательных платежей в бюджет в компетенции налоговых органов "), _c('h5', [_vm._v("(в соответствии с пп. 1. п.1 статьи 557 Налогового Кодекса РК, данная информация не является налоговой тайной)")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('i', [_c('img', {
     attrs: {

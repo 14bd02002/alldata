@@ -24,6 +24,8 @@ Route::group(['prefix' => 'backend'], function ($router) {
     $router->get('filials/{bin}', 'CompanyController@getFilials');
     $router->get('head/{bin}', 'CompanyController@getHead');
     $router->get('wanted/{bin}', 'CompanyController@wanted');
+    $router->get('taxes/{bin}', 'CompanyController@taxes');
+
 
     $router->get('get_token', 'Controller@getToken');
     $router->get('get_auth_status', 'Controller@getAuthStatus');

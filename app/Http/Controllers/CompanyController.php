@@ -103,4 +103,8 @@ class CompanyController extends Controller
         \phpQuery::unloadDocuments();
         return $wanted;
     }
+    public function taxes($bin) {
+        return shell_exec("python3 -W ignore ../interprises_parsers/parsers/tax/parser.py ".$bin);
+    }
+
 }
