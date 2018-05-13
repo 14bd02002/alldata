@@ -104,7 +104,7 @@ class CompanyController extends Controller
         return $wanted;
     }
     public function taxes($bin) {
-        return shell_exec("sudo /usr/bin/python3 -W ignore ../interprises_parsers/parsers/tax/parser.py ".$bin);
+        return shell_exec("sudo /usr/bin/python3 -W ignore /var/www/interprise.kz/interprises_parsers/parsers/tax/parser.py ".$bin);
     }
 
 }
